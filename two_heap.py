@@ -1,5 +1,5 @@
 from math import floor
-
+import sys
 
 class Node:
     def __init__(self, value: float):
@@ -22,9 +22,9 @@ class Heap:
         if not len(self._tree) == 1:
             index_added_element = len(self._tree) - 1
             added_element = self._tree[index_added_element]
-            index_parent = floor(index_added_element / 2)
+            index_parent = floor((index_added_element + 1) / 2) - 1
             parent = self._tree[index_parent]
-            while added_element.value > parent.value:
+            while added_element.value > parent.value and index_parent >= 0:
                 self._tree.insert(index_parent, added_element)
                 self._tree.pop(index_parent + 1)
                 self._tree.insert(index_added_element, parent)
@@ -32,7 +32,7 @@ class Heap:
 
                 # start new iteration
                 index_added_element = index_parent
-                index_parent = floor(index_added_element / 2)
+                index_parent = floor((index_added_element + 1) / 2) - 1
                 parent = self._tree[index_parent]
 
     def extract_max(self):
@@ -45,7 +45,7 @@ class Heap:
             key_element = self._tree.pop()
             index_key_element = 0
             self._tree.insert(index_key_element, key_element)
-            child_left_index, child_right_index = 1, 2
+            child_left_index, child_right_index = 2 * index_key_element + 1, 2 * index_key_element + 2
             child_left, child_right = self._get_node_from_tree(child_left_index), self._get_node_from_tree(child_right_index)
 
             while key_element.value < child_left.value or key_element.value < child_right.value:
@@ -78,10 +78,11 @@ def pass_interface(heap: Heap, command: str):
 
 
 heapq = Heap()
-# commands = int(input())
-# for _ in range(commands):
-#     heapq = pass_interface(heapq, input())
+commands = int(sys.stdin.readline())
+for _ in range(commands):
+    heapq = pass_interface(heapq, sys.stdin.readline().strip())
 
+raise Exception
 heapq = pass_interface(heapq, 'Insert 2')
 heapq = pass_interface(heapq, 'Insert 3')
 heapq = pass_interface(heapq, 'Insert 18')
@@ -98,50 +99,3 @@ heapq = pass_interface(heapq, 'ExtractMax')
 heapq = pass_interface(heapq, 'ExtractMax')
 heapq = pass_interface(heapq, 'ExtractMax')
 heapq = pass_interface(heapq, 'ExtractMax')
-heapq = pass_interface(heapq, 'ExtractMax')
-543
-944
-930
-246
-364
-746
-797
-692
-669
-526
-668
-344
-341
-368
-968
-904
-324
-660
-465
-860
-831
-304
-985
-997
-860
-740
-350
-983
-948
-921
-911
-786
-782
-633
-763
-967
-588
-536
-459
-281
-277
-255
-766
-772
-168
-157
