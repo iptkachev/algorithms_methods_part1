@@ -115,47 +115,49 @@ class HuffmanDecoder(HuffmanEncoder):
                 node = node.right_child
         self._tree[-1].string_char = char
 
-# I
-# test_str = 'abacabad'
-#
-# huff_encoder = HuffmanEncoder(test_str)
-# huff_encoder.make_huffman_tree()
-#
-# print(huff_encoder.binary_codes)
-# print(huff_encoder.encode_string(test_str))
-# print(huff_encoder.decode_binary_code('01001100100111'))
 
-# II
-# test_binary_codes = {'a': '0', 'b': '10', 'c': '110', 'd': '111'}
-# binary_code = '01001100100111'
-# huff_decoder = HuffmanDecoder(test_binary_codes)
-# huff_decoder.recover_huffman_tree()
-#
-# print(huff_decoder.binary_codes)
-# print(huff_decoder.decode_binary_code(binary_code))
-# print(huff_decoder.encode_string(test_str))
+if __name__ == '__main__':
+    # I
+    # test_str = 'abacabad'
+    #
+    # huff_encoder = HuffmanEncoder(test_str)
+    # huff_encoder.make_huffman_tree()
+    #
+    # print(huff_encoder.binary_codes)
+    # print(huff_encoder.encode_string(test_str))
+    # print(huff_encoder.decode_binary_code('01001100100111'))
+
+    # II
+    # test_binary_codes = {'a': '0', 'b': '10', 'c': '110', 'd': '111'}
+    # binary_code = '01001100100111'
+    # huff_decoder = HuffmanDecoder(test_binary_codes)
+    # huff_decoder.recover_huffman_tree()
+    #
+    # print(huff_decoder.binary_codes)
+    # print(huff_decoder.decode_binary_code(binary_code))
+    # print(huff_decoder.encode_string(test_str))
 
 
-# first exercise
-# string = input()
-# huff = HuffmanEncoder(string)
-# huff.make_huffman_tree()
-# encoded_string = huff.encode_string(string)
-# print(huff.unique_len, len(encoded_string))
-# for key, value in huff.binary_codes.items():
-#     print(f'{key}: {value}')
-# print(encoded_string)
+    # first exercise
+    # string = input()
+    # huff = HuffmanEncoder(string)
+    # huff.make_huffman_tree()
+    # encoded_string = huff.encode_string(string)
+    # print(huff.unique_len, len(encoded_string))
+    # for key, value in huff.binary_codes.items():
+    #     print(f'{key}: {value}')
+    # print(encoded_string)
 
-# second exercise
-unique_len, _ = input().split()
-test_binary_codes = dict()
-for i in range(int(unique_len)):
-    key, val = input().split(': ')
-    test_binary_codes[key] = val
-binary_code = input()
+    # second exercise
+    unique_len, _ = input().split()
+    test_binary_codes = dict()
+    for i in range(int(unique_len)):
+        key, val = input().split(': ')
+        test_binary_codes[key] = val
+    binary_code = input()
 
-huff = HuffmanDecoder(test_binary_codes)
-huff.recover_huffman_tree()
-encoded_string = huff.decode_binary_code(binary_code)
-print(encoded_string)
+    huff = HuffmanDecoder(test_binary_codes)
+    huff.recover_huffman_tree()
+    encoded_string = huff.decode_binary_code(binary_code)
+    print(encoded_string)
 

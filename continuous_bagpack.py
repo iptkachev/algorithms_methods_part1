@@ -1,5 +1,5 @@
 
-def greedy_fill_bagpack(parts: list, amount_bagpack: float):
+def greedy_fill_bagpack(parts: list, amount_bagpack: float) -> float:
     summary_value = 0.
     parts = sorted(parts, key=lambda x: x[0] / x[1])
     while amount_bagpack and parts:
@@ -14,11 +14,12 @@ def greedy_fill_bagpack(parts: list, amount_bagpack: float):
     return summary_value
 
 
-parts = []
-count_parts, amount_bagpack = map(int, input().split())
+if __name__ == '__main__':
+    parts = []
+    count_parts, amount_bagpack = map(int, input().split())
 
-for i in range(count_parts):
-    pair = tuple(map(int, input().split()))
-    parts.append(pair)
+    for i in range(count_parts):
+        pair = tuple(map(int, input().split()))
+        parts.append(pair)
 
-print(greedy_fill_bagpack(parts, amount_bagpack))
+    print(greedy_fill_bagpack(parts, amount_bagpack))

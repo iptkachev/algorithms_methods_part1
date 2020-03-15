@@ -11,7 +11,8 @@ def max_k_multiplies(n: int):
     return multipliers_k
 
 
-mults = max_k_multiplies(int(input()))
-print(len(mults))
-for i in mults:
-    print(i, end=' ')
+if __name__ == '__main__':
+    mults = max_k_multiplies(int(input()))
+    print(len(mults))
+    for i in mults:
+        print(i, end=' ')

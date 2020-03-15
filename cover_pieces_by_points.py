@@ -1,5 +1,5 @@
 
-def cover_pieces_by_points(pieces: list):
+def cover_pieces_by_points(pieces: list) -> set:
     pieces = sorted(pieces, key=lambda tupl: tupl[1])
     cover_point_set = set()
     while pieces:
@@ -13,12 +13,13 @@ def cover_pieces_by_points(pieces: list):
     return cover_point_set
 
 
-input_pieces = []
-for i in range(int(input())):
-    pair = tuple(map(int, input().split()))
-    input_pieces.append(pair)
+if __name__ =='__main__':
+    input_pieces = []
+    for i in range(int(input())):
+        pair = tuple(map(int, input().split()))
+        input_pieces.append(pair)
 
-decision = cover_pieces_by_points(input_pieces)
-print(len(decision))
-for point in decision:
-    print(point, end=' ')
+    decision = cover_pieces_by_points(input_pieces)
+    print(len(decision))
+    for point in decision:
+        print(point, end=' ')
