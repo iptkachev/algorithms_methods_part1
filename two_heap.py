@@ -1,21 +1,13 @@
 from math import floor
 import sys
 
-class Node:
-    def __init__(self, value: float):
-        self.value = value
-
-    def __repr__(self):
-        return f"Node({self.value})"
-
 
 class Heap:
     def __init__(self):
         self._tree = []
 
     def insert(self, x):
-        new_node = Node(x)
-        self._tree.append(new_node)
+        self._tree.append(x)
         self._siftup()
 
     def _siftup(self):
@@ -24,7 +16,7 @@ class Heap:
             added_element = self._tree[index_added_element]
             index_parent = floor((index_added_element + 1) / 2) - 1
             parent = self._tree[index_parent]
-            while added_element.value > parent.value and index_parent >= 0:
+            while added_element > parent and index_parent >= 0:
                 self._tree.insert(index_parent, added_element)
                 self._tree.pop(index_parent + 1)
                 self._tree.insert(index_added_element, parent)
@@ -48,9 +40,9 @@ class Heap:
             child_left_index, child_right_index = 2 * index_key_element + 1, 2 * index_key_element + 2
             child_left, child_right = self._get_node_from_tree(child_left_index), self._get_node_from_tree(child_right_index)
 
-            while key_element.value < child_left.value or key_element.value < child_right.value:
+            while key_element < child_left or key_element < child_right:
                 index_max_child, max_child = max([(child_left_index, child_left), (child_right_index, child_right)],
-                                                 key=lambda x: x[1].value)
+                                                 key=lambda x: x[1])
                 self._tree.insert(index_key_element, max_child)
                 key_element = self._tree.pop(index_key_element + 1)
                 self._tree.insert(index_max_child, key_element)
@@ -63,7 +55,7 @@ class Heap:
         try:
             node = self._tree[index]
         except IndexError:
-            node = Node(-float('inf'))
+            node = -float('inf')
         return node
 
 
@@ -72,17 +64,17 @@ def pass_interface(heap: Heap, command: str):
         method, number = command.split()
         heap.insert(int(number))
     elif command == 'ExtractMax':
-        print(heap.extract_max().value)
+        print(heap.extract_max())
 
     return heap
 
 
 heapq = Heap()
-commands = int(sys.stdin.readline())
-for _ in range(commands):
-    heapq = pass_interface(heapq, sys.stdin.readline().strip())
+# commands = int(sys.stdin.readline())
+# for _ in range(commands):
+#     heapq = pass_interface(heapq, sys.stdin.readline().strip())
 
-raise Exception
+# raise Exception
 heapq = pass_interface(heapq, 'Insert 2')
 heapq = pass_interface(heapq, 'Insert 3')
 heapq = pass_interface(heapq, 'Insert 18')
