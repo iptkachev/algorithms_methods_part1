@@ -1,5 +1,7 @@
+from typing import List
 
-def max_k_multiplies(n: int):
+
+def max_k_multiplies(n: int) -> List[int]:
     multipliers_k = []
     i = 1
     while n != 0:

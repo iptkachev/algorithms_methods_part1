@@ -1,5 +1,7 @@
+from typing import Set
 
-def cover_pieces_by_points(pieces: list) -> set:
+
+def cover_pieces_by_points(pieces: list) -> Set[int]:
     pieces = sorted(pieces, key=lambda tupl: tupl[1])
     cover_point_set = set()
     while pieces:

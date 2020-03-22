@@ -35,7 +35,7 @@ class MergeSort:
 
         return merged_array
 
-    def sort(self, array: Iterable):
+    def sort(self, array: Iterable) -> list:
         if len(array) == 1:
             return array
 
@@ -63,7 +63,6 @@ if __name__ == '__main__':
     Test([7, 6, 5, 4, 3, 2, 1], 21)
     Test([1, 2, 3, 5, 4], 1)
     Test([1, 3, 4, 5, 6, 2], 4)
-
 
     # _ = int(input())
     # array = list(map(int, input().split()))
