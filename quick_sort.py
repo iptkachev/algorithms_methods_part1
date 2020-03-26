@@ -4,6 +4,8 @@ import random
 import time
 from copy import deepcopy
 
+__all__ = ['quick_sort']
+
 
 def quick_sort(array: Iterable[Number], start=None, end=None) -> Iterable[Number]:
     if start is None and end is None:
@@ -17,9 +19,11 @@ def quick_sort(array: Iterable[Number], start=None, end=None) -> Iterable[Number
 
 
 def _partition(array: Iterable[Number], start: int, end: int) -> int:
-    random_pivot_index = random.randint(start, end)
-    pivot = array[random_pivot_index]
-    _swap(array, random_pivot_index, end)
+    mean_index = int((end - start) / 2)
+    median = sorted([(start, array[start]), (mean_index, array[mean_index]), (end, array[end])],
+                   key=lambda x: x[1])[1]  # take median
+    pivot = median[1]
+    _swap(array, median[0], end)
     p_index = start
     for i in range(start, end):
         if array[i] <= pivot:
@@ -55,7 +59,5 @@ if __name__ == '__main__':
     Test(test)
     test = [random.randint(0, 1000) for _ in range(10000)]
     Test(test)
-    test = [random.randint(0, 5) for _ in range(10000)]
-    Test(test)
-    test = [random.randint(0, 1000) for _ in range(10000)]
+    test = [random.randint(0, 10) for _ in range(10000)]
     Test(test)
