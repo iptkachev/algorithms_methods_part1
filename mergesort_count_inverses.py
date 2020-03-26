@@ -1,4 +1,5 @@
-from typing import Iterable
+from typing import List, Iterable
+from numbers import Number
 
 
 class MergeSort:
@@ -6,10 +7,10 @@ class MergeSort:
         self.inverses = 0
         self.sorted_array = None
 
-    def _merge(self, first: Iterable, second: Iterable) -> list:
+    def _merge(self, first: List[Number], second: List[Number]) -> List[Number]:
         len_first, len_second = len(first), len(second)
         counter_first, counter_second, counter_merged = 0, 0, 0
-        merged_array = [0 for _ in range(len_first + len_second)]
+        merged_array = [0. for _ in range(len_first + len_second)]
 
         while counter_first < len_first and counter_second < len_second:
             if first[counter_first] <= second[counter_second]:
@@ -35,7 +36,7 @@ class MergeSort:
 
         return merged_array
 
-    def sort(self, array: Iterable) -> list:
+    def sort(self, array: List[Number]) -> List[Number]:
         if len(array) == 1:
             return array
 
@@ -46,7 +47,7 @@ class MergeSort:
 
 
 class Test:
-    def __init__(self, array: Iterable, inverses: int):
+    def __init__(self, array: List[Number], inverses: int):
         self.merge_unit = MergeSort()  # claim
         self.sorted_array = self.merge_unit.sort(array)  # when
         assert self.sorted_array == sorted(array)  # assert

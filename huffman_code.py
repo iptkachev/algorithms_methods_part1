@@ -56,7 +56,7 @@ class HuffmanEncoder:
         for char_leaf in self._tree[:self.unique_len]:
             self.binary_codes[char_leaf.string_char] = self._get_code_for_char_leaf(char_leaf)
 
-    def _get_code_for_char_leaf(self, node: Node):
+    def _get_code_for_char_leaf(self, node: Node) -> str:
         binary_code = node.binary_value
         while node.parent.parent:
             node = node.parent
@@ -64,14 +64,14 @@ class HuffmanEncoder:
 
         return binary_code[::-1]
 
-    def encode_string(self, string: str):
+    def encode_string(self, string: str) -> str:
         binary_code = ''
         for char in string:
             binary_code += self.binary_codes[char]
 
         return binary_code
 
-    def decode_binary_code(self, binary_code: str):
+    def decode_binary_code(self, binary_code: str) -> str:
         decoded_string = ''
         node = self._tree[-1]  # root
         index_position = 0

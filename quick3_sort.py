@@ -1,13 +1,15 @@
-from typing import Iterable, Tuple
+from typing import List, Tuple
 from numbers import Number
 import random
 import time
 from copy import deepcopy
+from quick_sort import _get_median_element
+
 
 __all__ = ['quick3_sort']
 
 
-def quick3_sort(array: Iterable[Number], start: int = None, end: int = None) -> Iterable[Number]:
+def quick3_sort(array: List[Number], start: int = None, end: int = None) -> List[Number]:
     if start is None and end is None:
         start, end = 0, len(array) - 1
     if start < end:
@@ -18,10 +20,8 @@ def quick3_sort(array: Iterable[Number], start: int = None, end: int = None) -> 
     return array
 
 
-def _partition(array: Iterable[Number], start: int, end: int) -> Tuple[int, int]:
-    mean_index = int((end - start) / 2)
-    median = sorted([(start, array[start]), (mean_index, array[mean_index]), (end, array[end])],
-                   key=lambda x: x[1])[1]  # take median
+def _partition(array: List[Number], start: int, end: int) -> Tuple[int, int]:
+    median = _get_median_element(array, start, end)
     pivot = median[1]
     _swap(array, median[0], end)
 
@@ -48,7 +48,7 @@ def _partition(array: Iterable[Number], start: int, end: int) -> Tuple[int, int]
     return down_equal_index,  up_equal_index - 1
 
 
-def _swap(array, first_index: int, second_index: int):
+def _swap(array: List[Number], first_index: int, second_index: int):
     first = array[first_index]
     second = array[second_index]
     array[first_index] = second
@@ -56,10 +56,10 @@ def _swap(array, first_index: int, second_index: int):
 
 
 class Test:
-    def __init__(self, array: Iterable[Number]):
+    def __init__(self, array: List[Number]):
         self.array = deepcopy(array)
         t1 = time.time()
-        quick_sort(self.array)
+        quick3_sort(self.array)
         print(f'time: {time.time() - t1}')
         assert sorted(array) == self.array
 
