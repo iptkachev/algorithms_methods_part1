@@ -3,7 +3,7 @@ from numbers import Number
 import random
 import time
 from copy import deepcopy
-from quick_sort import _get_median_element
+from divide_and_conquer.quick_sort import _get_median_element
 
 
 __all__ = ['quick3_sort']

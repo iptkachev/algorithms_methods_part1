@@ -1,6 +1,6 @@
 from numbers import Number
 from typing import List
-from insertion_sort import insertion_sort
+from divide_and_conquer.insertion_sort import insertion_sort
 
 
 def count_sort(array: List[Number]) -> List[Number]:

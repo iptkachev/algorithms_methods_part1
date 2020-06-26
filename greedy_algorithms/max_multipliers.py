@@ -2,6 +2,11 @@ from typing import List
 
 
 def max_k_multiplies(n: int) -> List[int]:
+    """
+    Найти максимальное число k, для которого n можно представить как сумму k различных натуральных слагаемых.
+    :param n:
+    :return:
+    """
     multipliers_k = []
     i = 1
     while n != 0:
