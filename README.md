@@ -6,4 +6,4 @@ This repository presents solved exercises from course:
 2. Divide and Conquer: quick sort, merge sort, binary search, insertion sort
 3. Greedy algorithms: huffman encoding, knapsack allocation, independent set from graph-tree
 4. Dynamic programming: greatest increasing subsequence, levenshtein distance, knapsack, 
-minimum count coins for change, minimum _k_ multipliers for _n_ 
+minimum coins for change, minimum _k_ multipliers for _n_ 
